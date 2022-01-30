@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include "Math.h"
 /* This program is to illustrate simple math algorithms that users can select. 
- *The options will repeat till the user decides to quit with the quit option ‘e’  */
+ *The options will repeat till the user decides to quit with the quit option â€˜eâ€™  */
 int main(void)
 {
 	// Assigning variables for the simple math options
