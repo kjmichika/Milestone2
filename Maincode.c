@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include "Math.h"
+/* This program is to illustrate simple math algorithms that users can select.
+ *The options will repeat till the user decides to quit with the quit option ‘e’  */
 // function to sort the array in ascending order
 void Array_sort(int* array, int n)
 {
 	// declare some local variables
 	int i = 0, j = 0, temp = 0;
-
+	// A double loop to check each individual cell of the array and check to see if the first cell is larger than the second cell
+	// if the second cell is larger then it will swap the two cells. The second loops is for rechecking all cells are in order smallest to biggest.
 	for (i = 0; i < n; i++)
 	{
 		for (j = 0; j < n - 1; j++)
@@ -18,7 +21,7 @@ void Array_sort(int* array, int n)
 			}
 		}
 	}
-
+	// Prints out the sorted array in order from smallest to largest.
 	printf("The array after sorting is..\n");
 	for (i = 0; i < n; i++)
 	{
@@ -40,8 +43,7 @@ float Find_median(int array[], int n)
 
 	return median;
 }
-/* This program is to illustrate simple math algorithms that users can select. 
- *The options will repeat till the user decides to quit with the quit option ‘e’  */
+
 int main(void)
 {
 	// Assigning variables for the simple math options
@@ -159,29 +161,33 @@ int main(void)
 				printf("array_1[%d] : ", i);
 				scanf_s("%d", &array_1[i]);
 			}
-			// Sort the array in ascending order
+			// Directs to the array_sort function at beginning of code.
 			Array_sort(array_1, n);
 
-			// Now pass the sorted array to calculate
-			// the median of your array.
+			// Directs to find median function at beginning of code.
 			median = Find_median(array_1, n);
-
+			// the median or middle of your array.
 			printf("\nThe median is: %f\n", median);
 			double sum = 0, mean;
 			int j;
 			int t, max = 0, mode = 0;
+			// loop to cycle through the now sorted aray to gather the information for calculating the mean and mode.
 			for (j = 0; j < n; j++)
 			{
 				t = array_1[j];
 				c = 0;
 				sum += array_1[j];
+				// if statement to find last cell which is now the largest cell.
 				if (t == array_1[j]) c++; if (c > max)
 				{
 					mode = t;
 				}
 			}
+			// Calculate the Mean or average of the array.
 			mean = sum / n;
+			// Mean print out.
 			printf("The mean is: %lf \n", mean);
+			// Mode print out.
 			printf("mode is % d \n", mode);
 			system("pause");
 			break;
