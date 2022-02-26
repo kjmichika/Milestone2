@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <stdlib.h>
+
 /* This program is to illustrate simple math algorithms that users can select.
  *The options will repeat till the user decides to quit with the quit option ‘e’  */
  // function to sort the array in ascending order
@@ -74,35 +76,37 @@ int main(void)
 
 	// Assigning variables for the simple math options
 	int a, b;
-	char menu_option;
+	int menu_option;
 	float c;
 	// declare two int arrays
 	int array_1[100] = { 0 };
 	// declare some local variables
 	int i = 0, n = 0;
 	float median = 0;
+	
 	do
 	{
 		// This is the menu option giving you a variaty to choose from.
 		printf("Please select a math program option.\n");
 		printf("Would you like to..... \n");
 		printf("\n");
-		printf("a. Add two numbers together\n");
-		printf("b. Subtract two number from each other.\n");
-		printf("c. Get the product of two numbers.\n");
-		printf("d. Get the quotient of two numbers.\n");
-		printf("e. Make an array (up to 100 cells) rearrange the cells in order and get the mean, median, and mode of the array. \n");
-		printf("f. will give a demonstration of structures and unions information. \n");
-		printf("g. Quit.\n");
+		printf("1. Add two numbers together\n");
+		printf("2. Subtract two number from each other.\n");
+		printf("3. Get the product of two numbers.\n");
+		printf("4. Get the quotient of two numbers.\n");
+		printf("5. Make an array (up to 100 cells) rearrange the cells in order and get the mean, median, and mode of the array. \n");
+		printf("6. will give a demonstration of structures and unions information. \n");
+		printf("7. will give a demonstration of input and output. \n");
+		printf("8. Quit.\n");
 		// Scan user input.
-		scanf_s("%c", &menu_option);
+		scanf_s("%d", &menu_option);
 		// Switch function allowing the program to run the option the user selected.
 
 		switch (menu_option)
 
 		{
 			// Case function to run the code from the customer selection.
-		case 'a':
+		case 1:
 			printf("Calcuation will take two numbers you enter and add them.\n");
 			// A pause from the program to review the option selected.
 			system("pause");
@@ -119,7 +123,7 @@ int main(void)
 			// Break from the case function to continue the loop.
 			break;
 			// Case function to run the code from the customer selection.
-		case 'b':
+		case 2:
 			printf("Calcuation will take two numbers you enter and subtract them.\n");
 			// A pause from the program to review the option selected.
 			system("pause");
@@ -136,7 +140,7 @@ int main(void)
 			// Break from the case function to continue the loop.
 			break;
 			// Case function to run the code from the customer selection.
-		case 'c':
+		case 3:
 			printf("Calcuation will take two numbers you enter and multiply them.\n");
 			// A pause from the program to review the option selected.
 			system("pause");
@@ -153,7 +157,7 @@ int main(void)
 			// Break from the case function to continue the loop.
 			break;
 			// Case function to run the code from the customer selection.
-		case 'd':
+		case 4:
 			printf("Calcuation will take two numbers you enter and divide them.\n");
 			// A pause from the program to review the option selected.
 			system("pause");
@@ -164,11 +168,10 @@ int main(void)
 			printf("Enter the second number: ");
 			scanf_s("%d", &b);
 			// Error checking if statement to see if second number entered is 0 and to exit if it is.
-			if (b == 0)
+			while (b == 0)
 			{
-				fprintf(stderr, "Division by zero! Exiting...\n");
-				system("pause");
-				exit(-1);
+				fprintf(stderr, "Division by zero! Choose a different number!\n");
+				scanf_s("%d", &b);
 			}
 			// Calculating the quotient of the two numbers in a float for decimal answers.
 			c = a / (float)b;
@@ -178,7 +181,7 @@ int main(void)
 			// Break from the case function to continue the loop.
 			break;
 
-		case 'e':
+		case 5:
 			printf("Calcuation will take any size Array (up to 100) and calculate the mean, median, and mode.\n");
 			// A pause from the program to review the option selected.
 			system("pause");
@@ -225,11 +228,11 @@ int main(void)
 
 
 			//case function for unions and structures differences
-		case 'f':
+		case 6:
 
 			printf("structure data:\n integer: %d\n" "decimal: %.2f\n name: %s\n", s.integer, s.decimal, s.name);
 			printf("\nunion data:\n integer: %d\n" "decimal: %.2f\n name: %s\n", u.integer, u.decimal, u.name);
-			
+
 			// difference size of union and structure
 			printf("\nsizeof structure : %d\n", sizeof(s));
 			printf("sizeof union : %d\n", sizeof(u));
@@ -255,10 +258,10 @@ int main(void)
 			printf("\ninteger: %d", s.integer);
 			s.decimal = 120;
 			printf("\ndecimal: %f", s.decimal);
-			
+
 			strcpy(s.name, "C programming");
 			printf("\nname: %s\n", s.name);
-			
+
 			printf("\n union data:");
 			//injected integers
 			u.integer = 240;
@@ -266,7 +269,7 @@ int main(void)
 
 			u.decimal = 120;
 			printf("\ndecimal: %f", u.decimal);
-			
+
 			strcpy(u.name, "C programming");
 			printf("\nname: %s\n", u.name);
 			system("pause");
@@ -275,18 +278,75 @@ int main(void)
 
 			s.integer = 4563;
 			printf("structure data:\n integer: %d\n " " decimal: %.2f\n name: %s\n", s.integer, s.decimal, s.name);
-			
+
 			u.integer = 4563;
 			printf("\nunion data:\n integer: %d\n" " decimal: %.2f\n name: %s\n", u.integer, u.decimal, u.name);
 
 			system("pause");
 			break;
 
+		case 7:
+#define DATA_SIZE 1000
+			printf("This section will save your input into a .txt file and display it. \n");
+			// A pause from the program to review the option selected.
+			system("pause");
+			char data[DATA_SIZE];
+			float number1, number2, sum2;
+			/* File pointer to hold reference to our file */
+			FILE* fPtr;
+
+			/*
+			 * Open file in w (write) mode.
+			 * "data/file1.txt" is complete path to create file
+			 */
+			fPtr = fopen("numbers.txt", "w");
+
+			/* fopen() return NULL if last operation was unsuccessful */
+			if (fPtr == NULL)
+			{
+				/* File not created hence exit */
+				printf("Unable to create file.\n");
+				exit(EXIT_FAILURE);
+			}
+
+			/* Input contents from user to store in file */
+			printf("Enter contents to store in file in the format of 'number' 'number': \n");
+			scanf_s("%c", &data);
+			fgets(data, DATA_SIZE, stdin);
+
+			/* Write data to file */
+			fputs(data, fPtr);
+
+			/* Close file to save file data */
+			fclose(fPtr);
+			/* Success message */
+			printf("File created and saved successfully. :) \n");
+			fPtr = fopen("numbers.txt", "r");
+			if (fPtr == NULL)
+			{
+				printf("Unable to find file.\n");
+				exit(EXIT_FAILURE);
+			}
+			else
+			{
+				fscanf(fPtr, "%f", &number1);
+				fscanf(fPtr, "%f", &number2);
+				sum2 = number1 + number2;
+				printf("Sum of number %f and %f is %f\n", number1, number2, sum2);
+				fclose(fPtr);
+			}
+
+			system("pause");
+			printf("\n");
+
+			// Break from the case function to continue the loop.
+			break;
 
 			// Case function to run the code from the customer selection.
-		case 'g':
+		case 8:
 			printf("Exiting!\n");
 			system("pause");
+			exit(0);
 			// Break from the case function to continue the loop.
 			break;
 
@@ -296,11 +356,11 @@ int main(void)
 
 			printf("invalid input\n");
 			break;
-			
+
 
 		}
 	}		// Ending of the loop if option e was slected, ending the program.
-	while (menu_option != 'g'); 
+	while (menu_option != '8');
 
 	return 0;
 }
